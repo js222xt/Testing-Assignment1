@@ -56,7 +56,7 @@ public class Calculator
 		return (float) (d * e);
 	}
 
-	public int substract(int i, int j) {
+	public double substract(double i, double j) {
 		return i - j;
 	}
 	

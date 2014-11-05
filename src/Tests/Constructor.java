@@ -43,13 +43,16 @@ public class Constructor {
 	}
 	
 	@Test
-	public void shouldSubtractInt()
-	{		
-		Assert.assertEquals(10, c.substract(15,5));
-		Assert.assertEquals(-10, c.substract(0,10));
-		Assert.assertEquals(0, c.substract(15,15));
-		Assert.assertEquals(15, c.substract(15,0));
+	public void shouldSubtract()
+	{	
+		double delta = 0;
+		Assert.assertEquals(10.0, c.substract(15.0,5.0), delta);
+		Assert.assertEquals(-10.0, c.substract(0.0,10.0),delta);
+		Assert.assertEquals(0.0, c.substract(15.0,15.0),delta);
+		Assert.assertEquals(15.0, c.substract(15.0,0.0),delta);
+		Assert.assertEquals(30.55, c.substract(31.55,1.0),delta);
 	}
+
 	
 	@Test
 	public void shouldMultiplyFLoat()
