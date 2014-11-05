@@ -8,98 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class Constructor {
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-<<<<<<< HEAD
-	
 	Calculator c;
 	
 	@Before
@@ -108,8 +16,6 @@ public class Constructor {
 		c = new Calculator();
 	}
 
-=======
->>>>>>> origin/master
 	@Test
 	public void shouldCreateInstance() 
 	{		
@@ -118,9 +24,7 @@ public class Constructor {
 	
 	@Test
 	public void shouldMultiply()
-	{
-		Calculator c  = new  Calculator();
-		
+	{		
 		Assert.assertEquals(25, c.multiply(5,5));
 	}
 
