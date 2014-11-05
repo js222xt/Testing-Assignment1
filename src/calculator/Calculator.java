@@ -55,5 +55,9 @@ public class Calculator
 	public float multiplyFloat(double d, double e) {
 		return (float) (d * e);
 	}
+
+	public int substract(int i, int j) {
+		return i - j;
+	}
 	
 }
