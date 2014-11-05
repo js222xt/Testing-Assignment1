@@ -1,9 +1,7 @@
 package calculator;
 
-public class Calculator {
+public class Calculator 
+{
 
-	public Calculator(){
-		
-	}
 	
 }

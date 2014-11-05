@@ -1,16 +1,19 @@
 package Tests;
 
 import static org.junit.Assert.*;
-
-import org.junit.Test;
-
 import calculator.*;
+
+import org.junit.Assert;
+import org.junit.Test;
 
 public class Constructor {
 
 	@Test
-	public Calculator shouldCreateInstance() {
-		return new Calculator();
+	public void shouldCreateInstance() 
+	{
+		Calculator c = new Calculator();
+		
+		Assert.assertEquals(true,c instanceof Calculator);
 	}
 
 }
