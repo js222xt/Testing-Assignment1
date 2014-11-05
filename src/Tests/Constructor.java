@@ -35,11 +35,20 @@ public class Constructor {
 	@Test
 	public void shouldMultiplyInt()
 	{		
-		Assert.assertEquals(25, 25, c.multiply(5,5));
+		Assert.assertEquals(25, c.multiplyInt(5,5));
 		Assert.assertEquals(25, c.multiplyInt(5,5));
 		Assert.assertEquals(0, c.multiplyInt(0,5));
 		Assert.assertEquals(0, c.multiplyInt(5,0));
 		Assert.assertEquals(0, c.multiplyInt(0,0));
+	}
+	
+	@Test
+	public void shouldSubtractInt()
+	{		
+		Assert.assertEquals(10, c.substract(15,5));
+		Assert.assertEquals(-10, c.substract(0,10));
+		Assert.assertEquals(0, c.substract(15,15));
+		Assert.assertEquals(15, c.substract(15,0));
 	}
 	
 	@Test
