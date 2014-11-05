@@ -21,7 +21,7 @@ public class Constructor {
 	{
 		Calculator c  = new  Calculator();
 		
-		Assert.assertArrayEquals(25, c.multiply(5,5));
+		Assert.assertEquals(25, c.multiply(5,5));
 	}
 
 }
