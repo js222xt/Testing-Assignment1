@@ -34,8 +34,10 @@ public class Constructor {
 	@Test
 	public void shouldMultiplyFLoat()
 	{		
-		Assert.assertEquals(25.0, c.multiplyFloat(5.0,5.0));
-		Assert.assertEquals(11.0, c.multiplyFloat(5.5,2.0));
+		float delta = 0;
+		Assert.assertEquals(25.0f, c.multiplyFloat(5.0f,5.0f), delta);
+		Assert.assertEquals(11.0f, c.multiplyFloat(5.5f,2.0f), delta);
+		Assert.assertEquals(30.802502f, c.multiplyFloat(5.55f,5.55f), delta);
 	}
 
 

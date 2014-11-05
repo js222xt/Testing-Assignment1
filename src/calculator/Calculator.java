@@ -13,5 +13,11 @@ public class Calculator
 	{
 		return num1 + num2;
 	}
+
+
+
+	public float multiplyFloat(double d, double e) {
+		return (float) (d * e);
+	}
 	
 }
