@@ -13,134 +13,6 @@ import org.junit.Test;
 public class Constructor {
 	Calculator c;
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Before
 	public void Constructor()
 	{
@@ -163,14 +35,11 @@ public class Constructor {
 	@Test
 	public void shouldMultiplyInt()
 	{		
-<<<<<<< HEAD
 		Assert.assertEquals(25, 25, c.multiply(5,5));
-=======
 		Assert.assertEquals(25, c.multiplyInt(5,5));
 		Assert.assertEquals(0, c.multiplyInt(0,5));
 		Assert.assertEquals(0, c.multiplyInt(5,0));
 		Assert.assertEquals(0, c.multiplyInt(0,0));
->>>>>>> origin/master
 	}
 	
 	@Test
