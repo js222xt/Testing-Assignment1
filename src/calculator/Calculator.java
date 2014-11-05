@@ -3,7 +3,7 @@ package calculator;
 public class Calculator 
 {
 
-	public int multiply(int a, int b){
+	public int multiplyInt(int a, int b){
 		return a * b;
 	}
 	
