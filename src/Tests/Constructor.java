@@ -16,4 +16,15 @@ public class Constructor {
 		Assert.assertEquals(true,c instanceof Calculator);
 	}
 
+	
+	@Test
+	public void sumTest()
+	{
+		Assert.assertEquals(6, 3+3);
+		Assert.assertEquals(-6, 3-9);
+		Assert.assertEquals(6, -12+18);
+		Assert.assertEquals(0, 0);
+	}
+	
+	
 }
