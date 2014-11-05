@@ -13,6 +13,134 @@ import org.junit.Test;
 public class Constructor {
 	Calculator c;
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Before
 	public void Constructor()
 	{
@@ -33,10 +161,27 @@ public class Constructor {
 	}
 	
 	@Test
-	public void shouldMultiply()
+	public void shouldMultiplyInt()
 	{		
+<<<<<<< HEAD
 		Assert.assertEquals(25, 25, c.multiply(5,5));
+=======
+		Assert.assertEquals(25, c.multiplyInt(5,5));
+		Assert.assertEquals(0, c.multiplyInt(0,5));
+		Assert.assertEquals(0, c.multiplyInt(5,0));
+		Assert.assertEquals(0, c.multiplyInt(0,0));
+>>>>>>> origin/master
 	}
+	
+	@Test
+	public void shouldMultiplyFLoat()
+	{		
+		float delta = 0;
+		Assert.assertEquals(25.0f, c.multiplyFloat(5.0f,5.0f), delta);
+		Assert.assertEquals(11.0f, c.multiplyFloat(5.5f,2.0f), delta);
+		Assert.assertEquals(30.802502f, c.multiplyFloat(5.55f,5.55f), delta);
+	}
+
 
 	@Test (expected=Error.class)
 	public void overloadAdd()

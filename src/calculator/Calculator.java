@@ -3,6 +3,90 @@ package calculator;
 public class Calculator 
 {
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<<<<<<< HEAD
 	public double multiply(double a, double b)
 	{
 		try
@@ -13,10 +97,15 @@ public class Calculator
 		{
 			throw new RuntimeException("Error: " + e.toString());
 		}
+=======
+	public int multiplyInt(int a, int b){
+		return a * b;
+>>>>>>> origin/master
 	}
 	
 	
 	
+<<<<<<< HEAD
 	
 	public double add(double num1, double num2)
 	{
@@ -32,6 +121,9 @@ public class Calculator
 	
 	
 	public double divide(double numerator, double denominator)
+=======
+	public int add (int num1, int num2)
+>>>>>>> origin/master
 	{
 		try
 		{ 
@@ -45,6 +137,12 @@ public class Calculator
 		{
 			throw new RuntimeException("Error: " + e.toString());
 		}
+	}
+
+
+
+	public float multiplyFloat(double d, double e) {
+		return (float) (d * e);
 	}
 	
 }
