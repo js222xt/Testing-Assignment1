@@ -29,6 +29,9 @@ public class TestUnitTestCase {
 		assertEquals(10.0, c.multiply(2.0,5.0), delta);
 	}
 	
-	
+	@Test(expected = RuntimeException.class)
+	public void shouldThrowExceptionMultiply(){
+		c.multiply(Double.MAX_VALUE,5.0);
+	}
 	
 }
