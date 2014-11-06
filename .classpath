@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Jonas/Downloads/Installera/junit-4.11.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Jonas/Downloads/Installera/mockito-all-1.9.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Jonas/Downloads/Installera/codecover-batch-1.0.zip"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

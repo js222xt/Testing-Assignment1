@@ -23,4 +23,9 @@ public class TestUnitTestCase {
 		assertTrue(c instanceof Calculator);
 	}
 
+	@Test
+	public void shouldMultiply(){
+		assertEquals(10.0, c.multiply(2.0,5.0));
+	}
+	
 }
