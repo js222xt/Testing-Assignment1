@@ -30,5 +30,10 @@ public class Calculator
 	public double recArea(double length, double hight) {
 		return multiply(length, hight);
 	}
+
+	public double triC(double a, double b) {
+		double res = Math.sqrt( Math.pow(a, 2) + Math.pow(b, 2) );
+		return res;
+	}
 	
 }
