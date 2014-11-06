@@ -3,6 +3,17 @@ package calculator;
 public class Calculator 
 {
 	public double multiply(double a, double b){
-		return a * b;
+		try{
+			double res = a * b;
+			if(!Double.isInfinite(res)){
+				return res;
+			}
+			else{
+				throw new RuntimeException("Double is Infinite");
+			}			
+		}
+		catch(Exception e){
+			throw new RuntimeException(e.getMessage());
+		}		
 	}
 }
