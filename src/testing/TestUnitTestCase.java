@@ -25,7 +25,8 @@ public class TestUnitTestCase {
 
 	@Test
 	public void shouldMultiply(){
-		assertEquals(10.0, c.multiply(2.0,5.0));
+		double delta = 0;
+		assertEquals(10.0, c.multiply(2.0,5.0), delta);
 	}
 	
 }
