@@ -50,7 +50,7 @@ public class TestUnitTestCase {
 	
 	@Test(expected = RuntimeException.class)
 	public void shouldThrowExceptionSub(){
-		c.sub(Double.MIN_VALUE,5.0);
+		c.sub(Double.MIN_VALUE,Double.NEGATIVE_INFINITY);
 	}
 	
 }

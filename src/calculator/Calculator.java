@@ -19,6 +19,11 @@ public class Calculator
 
 	public double sub(double a, double b) {
 		double res = a - b;
-		return res;
+		if(!Double.isInfinite(res)){
+			return res;
+		}
+		else{
+			throw new RuntimeException("Double is Infinite");
+		}
 	}
 }
