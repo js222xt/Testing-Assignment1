@@ -23,4 +23,11 @@ public class TestUnitTestCase {
 		assertTrue(c instanceof Calculator);
 	}
 
+	@Test (expected=Error.class)
+	public void overloadAdd()
+	{
+		c.add(2147483647, 2);
+	}
+
+	
 }
