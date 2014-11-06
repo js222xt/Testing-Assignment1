@@ -58,4 +58,10 @@ public class TestUnitTestCase {
 		double delta = 0;
 		assertEquals(25, c.recArea(5.0,5.0), delta);
 	}
+	
+	@Test
+	public void shouldGetRectangleC(){
+		double delta = 0.01;
+		assertEquals(5.0, c.triC(3.0,4.0), delta);
+	}
 }
