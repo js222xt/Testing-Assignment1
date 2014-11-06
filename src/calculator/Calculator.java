@@ -26,4 +26,5 @@ public class Calculator
 			throw new RuntimeException("Double is Infinite");
 		}
 	}
+	
 }

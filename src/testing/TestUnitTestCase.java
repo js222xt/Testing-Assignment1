@@ -53,4 +53,9 @@ public class TestUnitTestCase {
 		c.sub(Double.MIN_VALUE,Double.NEGATIVE_INFINITY);
 	}
 	
+	@Test
+	public void shouldGetRectangleArea(){
+		double delta = 0;
+		assertEquals(25, c.recArea(5.0,5.0), delta);
+	}
 }
