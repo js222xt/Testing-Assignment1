@@ -37,9 +37,15 @@ public class TestUnitTestCase {
 	}
 	
 	@Test
-	public void shouldSubstract(){
+	public void shouldSubstractPositive(){
 		double delta = 0;
 		assertEquals(10.0, c.sub(15.0,5.0), delta);
+	}
+	
+	@Test
+	public void shouldSubstractNegative(){
+		double delta = 0;
+		assertEquals(-10.0, c.sub(0.0,-10.0), delta);
 	}
 	
 }
