@@ -16,4 +16,8 @@ public class Calculator
 			throw new RuntimeException(e.getMessage());
 		}		
 	}
+
+	public double sub(double d, double e) {
+		return 10;
+	}
 }
