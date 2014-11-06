@@ -48,4 +48,9 @@ public class TestUnitTestCase {
 		assertEquals(-10.0, c.sub(0.0,10.0), delta);
 	}
 	
+	@Test(expected = RuntimeException.class)
+	public void shouldThrowExceptionSub(){
+		c.sub(Double.MIN_VALUE,5.0);
+	}
+	
 }
