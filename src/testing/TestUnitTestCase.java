@@ -45,7 +45,7 @@ public class TestUnitTestCase {
 	@Test
 	public void shouldSubstractNegative(){
 		double delta = 0;
-		assertEquals(-10.0, c.sub(0.0,-10.0), delta);
+		assertEquals(-10.0, c.sub(0.0,10.0), delta);
 	}
 	
 }

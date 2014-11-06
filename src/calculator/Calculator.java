@@ -17,7 +17,8 @@ public class Calculator
 		}		
 	}
 
-	public double sub(double d, double e) {
-		return 10;
+	public double sub(double a, double b) {
+		double res = a - b;
+		return res;
 	}
 }
