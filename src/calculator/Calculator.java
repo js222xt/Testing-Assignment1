@@ -26,5 +26,9 @@ public class Calculator
 			throw new RuntimeException("Double is Infinite");
 		}
 	}
+
+	public double recArea(double length, double hight) {
+		return multiply(length, hight);
+	}
 	
 }
