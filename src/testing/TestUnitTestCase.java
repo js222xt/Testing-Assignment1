@@ -64,4 +64,9 @@ public class TestUnitTestCase {
 		double delta = 0.01;
 		assertEquals(5.0, c.triC(3.0,4.0), delta);
 	}
+	
+	@Test(expected = RuntimeException.class)
+	public void shouldThrowExceptionTriC(){
+		c.triC(Double.MAX_VALUE,4.0);
+	}
 }
