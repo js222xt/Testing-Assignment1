@@ -29,4 +29,27 @@ public class Calculator
 		}
 		throw new Exception("Error.");
 	}
+	
+	/**
+	 * Divide to numbers
+	 * @param numerator
+	 * @param denominator
+	 * @return result
+	 */
+	public double divide(double numerator, double denominator)
+	{
+		try
+		{ 
+			if (denominator == 0)
+			{
+				throw new RuntimeException("Denominator is zero!");
+			}
+			return numerator/denominator;
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException("Error: " + e.toString());
+		}
+	}
+	
 }

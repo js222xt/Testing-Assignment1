@@ -30,16 +30,26 @@ public class TestUnitTestCase {
 		c.add(Double.MAX_VALUE, Double.MAX_VALUE);
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Test 
 	public void addnumbers() throws Exception
 	{
-		assertEquals(4.50, c.add(2.25, 2.25), 0);
-
-		assertEquals(10.25, c.add(5.125, 5.125), 0);
-
+		assertEquals(4.50, c.add(2.25, 2.25), 0); 
+		assertEquals(10.25, c.add(5.125, 5.125), 0); 
 		assertEquals(10.5, c.add(5, 5.5), 0);
-
+	}
+	
+	@Test (expected=Error.class)
+	public void overloadSubtract()
+	{
+		Assert.assertEquals(true, c.divide(2, 9));
+	}
+	
+	@Test
+	public void DivideTest()
+	{
+		Assert.assertEquals(6, 6, c.divide(36,6));
+		Assert.assertEquals(12, 12, c.divide(120,10));
+		Assert.assertEquals(5, 5, c.divide(0, 5));
 	}
 	
 
