@@ -33,7 +33,12 @@ public class Calculator
 
 	public double triC(double a, double b) {
 		double res = Math.sqrt( Math.pow(a, 2) + Math.pow(b, 2) );
-		return res;
+		if(!Double.isInfinite(res)){
+			return res;
+		}
+		else{
+			throw new RuntimeException("Double is Infinite");
+		}
 	}
 	
 }
