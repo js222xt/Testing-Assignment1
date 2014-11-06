@@ -2,6 +2,7 @@ package testing;
 
 import static org.junit.Assert.*;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,10 +25,11 @@ public class TestUnitTestCase {
 	}
 
 	@Test (expected=Error.class)
-	public void overloadAdd()
-	{
-		c.add(2147483647, 2);
+	public void overloadAdd() throws Exception
+	{ 
+		c.add(Double.MAX_VALUE, Double.MAX_VALUE);
 	}
+	
 
 	
 }
