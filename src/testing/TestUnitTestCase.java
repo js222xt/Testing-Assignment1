@@ -27,11 +27,19 @@ public class TestUnitTestCase {
 	public void shouldMultiply(){
 		double delta = 0;
 		assertEquals(10.0, c.multiply(2.0,5.0), delta);
+		assertEquals(-10.0, c.multiply(2.0,-5.0), delta);
+		assertEquals(0.0, c.multiply(-2.0,0.0), delta);
 	}
 	
 	@Test(expected = RuntimeException.class)
 	public void shouldThrowExceptionMultiply(){
 		c.multiply(Double.MAX_VALUE,5.0);
+	}
+	
+	@Test
+	public void shouldSubstract(){
+		double delta = 0;
+		assertEquals(10.0, c.sub(15.0,5.0), delta);
 	}
 	
 }
