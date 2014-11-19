@@ -3,6 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/kvasi/workspace/FoST2.Robert.Jarlvik/junit-4.11.jar" sourcepath="/FoST3.Robert.Jarlvik"/>
-	<classpathentry kind="lib" path="C:/Users/kvasi/Documents/mockito-all-1.9.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kvasi/Documents/Testing-Assignment1/mockito-all-1.9.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
