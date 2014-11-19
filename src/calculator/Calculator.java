@@ -18,10 +18,6 @@ public class Calculator
 			{ 
 				return num1 + num2;
 			}
-			else
-			{
-				throw new Error("Error.");
-			}
 		}
 		catch (Exception ex)
 		{
