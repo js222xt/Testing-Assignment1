@@ -1,0 +1,846 @@
+<?xml version="1.0" encoding="UTF-8"?><TestSessionContainer xmlns="http://www.codecover.org/xml/testsession-container" Date="1415351218342" TestSessionContainerId="d8392bee-275e-4e01-ae02-1bdd79de28ce" version="1.0">
+<SrcFileList>
+<SrcFile Content="package testing;&#13;&#10;&#13;&#10;import static org.junit.Assert.*;&#13;&#10;&#13;&#10;import org.junit.Assert;&#13;&#10;import org.junit.Before;&#13;&#10;import org.junit.Test;&#13;&#10;&#13;&#10;import calculator.Calculator;&#13;&#10;&#13;&#10;public class TestUnitTestCase &#13;&#10;{&#13;&#10;&#13;&#10;&#9;private Calculator c;&#13;&#10;&#13;&#10;&#9;@Before&#13;&#10;&#9;public void initiate()&#13;&#10;&#9;{&#13;&#10;&#9;&#9;c = new Calculator();&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;@Test &#13;&#10;&#9;public void shouldCreateInstance()&#13;&#10;&#9;{&#13;&#10;&#9;&#9;assertTrue(c instanceof Calculator);&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;@Test (expected=Error.class)&#13;&#10;&#9;public void overloadAdd() throws Exception&#13;&#10;&#9;{ &#13;&#10;&#9;&#9;c.add(Double.MAX_VALUE, Double.MAX_VALUE);&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;@Test &#13;&#10;&#9;public void addnumbers() throws Exception&#13;&#10;&#9;{&#13;&#10;&#9;&#9;assertEquals(4.50, c.add(2.25, 2.25), 0); &#13;&#10;&#9;&#9;assertEquals(10.25, c.add(5.125, 5.125), 0); &#13;&#10;&#9;&#9;assertEquals(10.5, c.add(5, 5.5), 0);&#13;&#10;&#9;&#9;assertEquals(-10, c.add(-5, -5), 0);&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;@Test (expected=Error.class)&#13;&#10;&#9;public void overloadSubtract()&#13;&#10;&#9;{&#13;&#10;&#9;&#9;Assert.assertEquals(true, c.divide(2, 9));&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;@Test&#13;&#10;&#9;public void DivideTest()&#13;&#10;&#9;{&#13;&#10;&#9;&#9;Assert.assertEquals(-6, -6, c.divide(-36,6));&#13;&#10;&#9;&#9;Assert.assertEquals(6, 6, c.divide(36,6));&#13;&#10;&#9;&#9;Assert.assertEquals(12, 12, c.divide(120,10));&#13;&#10;&#9;&#9;Assert.assertEquals(5, 5, c.divide(0, 5));&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#13;&#10;&#9;&#13;&#10;}&#13;&#10;" Filename="TestUnitTestCase.java" Intrnl_Id="1"/>
+<SrcFile Content="package calculator;&#13;&#10;&#13;&#10;public class Calculator &#13;&#10;{&#13;&#10;&#9;/**&#13;&#10;&#9; * Adds two numbers &#13;&#10;&#9; * @param num1 number 1&#13;&#10;&#9; * @param num2 number 2&#13;&#10;&#9; * @return result of adding the two numbers&#13;&#10;&#9; * @throws Exception &#13;&#10;&#9; */&#13;&#10;&#9;public double add(double num1, double num2) throws Exception&#13;&#10;&#9;{&#13;&#10;&#9;&#9;try&#13;&#10;&#9;&#9;{&#13;&#10;&#9;&#9;&#9;double result = num1 + num2;&#13;&#10;&#9;&#9;&#9;if (!Double.isInfinite(result))&#13;&#10;&#9;&#9;&#9;{ &#13;&#10;&#9;&#9;&#9;&#9;return num1 + num2;&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;else&#13;&#10;&#9;&#9;&#9;{&#13;&#10;&#9;&#9;&#9;&#9;throw new Error(&quot;Error.&quot;);&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;catch (Exception ex)&#13;&#10;&#9;&#9;{&#13;&#10;&#9;&#9;&#9;System.out.println(&quot;Error: &quot; + ex.toString());&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;throw new Exception(&quot;Error.&quot;);&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;&#9;/**&#13;&#10;&#9; * Divide to numbers&#13;&#10;&#9; * @param numerator&#13;&#10;&#9; * @param denominator&#13;&#10;&#9; * @return result&#13;&#10;&#9; */&#13;&#10;&#9;public double divide(double numerator, double denominator)&#13;&#10;&#9;{&#13;&#10;&#9;&#9;try&#13;&#10;&#9;&#9;{ &#13;&#10;&#9;&#9;&#9;if (denominator == 0)&#13;&#10;&#9;&#9;&#9;{&#13;&#10;&#9;&#9;&#9;&#9;throw new RuntimeException(&quot;Denominator is zero!&quot;);&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;return numerator/denominator;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;catch (Exception e)&#13;&#10;&#9;&#9;{&#13;&#10;&#9;&#9;&#9;throw new RuntimeException(&quot;Error: &quot; + e.toString());&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;}&#13;&#10;" Filename="Calculator.java" Intrnl_Id="2"/>
+</SrcFileList>
+<CritList>
+<CritListEntry Name="org.codecover.model.utils.criteria.LoopCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.QMOCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.ConditionCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.BranchCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.SynchronizedStatementCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.StatementCoverage" PluginName="org.codecover"/>
+</CritList>
+<BoolOpList>
+<BoolOp Arity="1" Intrnl_Id="3" Name="not (!)">
+<BoolAssgnmntBoolMapList>
+<MapEntry BoolAssgnmnt="1" Value="false"/>
+<MapEntry BoolAssgnmnt="0" Value="true"/>
+</BoolAssgnmntBoolMapList>
+</BoolOp>
+</BoolOpList>
+<HierarchyLvlTypeList>
+<HierarchyLvlType EnglishName="package" IntrnlName="package" Intrnl_Id="4"/>
+<HierarchyLvlType EnglishName="method" IntrnlName="method" Intrnl_Id="5"/>
+<HierarchyLvlType EnglishName="class" IntrnlName="class" Intrnl_Id="6"/>
+<HierarchyLvlType EnglishName="default package" IntrnlName="default package" Intrnl_Id="7"/>
+</HierarchyLvlTypeList>
+<MASTRoot>
+<HierarchyLvl HierarchyLvlId="170" HierarchyLvlTypeId="7" Intrnl_Id="8" Name="default package">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="168" HierarchyLvlTypeId="4" Intrnl_Id="9" Name="testing">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="164" HierarchyLvlTypeId="6" Intrnl_Id="10" Name="TestUnitTestCase">
+<Header>
+<Loc EndOffset="197" SrcFileId="1" StartOffset="168"/>
+</Header>
+<LocList>
+<Loc EndOffset="1136" SrcFileId="1" StartOffset="168"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="158" HierarchyLvlTypeId="5" Intrnl_Id="11" Name="initiate">
+<Header>
+<Loc EndOffset="264" SrcFileId="1" StartOffset="232"/>
+</Header>
+<LocList>
+<Loc EndOffset="297" SrcFileId="1" StartOffset="232"/>
+</LocList>
+<StmntSeq Intrnl_Id="12">
+<LocList>
+<Loc EndOffset="293" SrcFileId="1" StartOffset="272"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="testing.TestUnitTestCase.java" Intrnl_Id="13">
+<LocList>
+<Loc EndOffset="293" SrcFileId="1" StartOffset="272"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="159" HierarchyLvlTypeId="5" Intrnl_Id="14" Name="shouldCreateInstance">
+<Header>
+<Loc EndOffset="346" SrcFileId="1" StartOffset="303"/>
+</Header>
+<LocList>
+<Loc EndOffset="394" SrcFileId="1" StartOffset="303"/>
+</LocList>
+<StmntSeq Intrnl_Id="15">
+<LocList>
+<Loc EndOffset="390" SrcFileId="1" StartOffset="354"/>
+</LocList>
+<BasicStmnt CovItemId="S2" CovItemPrefix="testing.TestUnitTestCase.java" Intrnl_Id="16">
+<LocList>
+<Loc EndOffset="390" SrcFileId="1" StartOffset="354"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="160" HierarchyLvlTypeId="5" Intrnl_Id="17" Name="overloadAdd">
+<Header>
+<Loc EndOffset="472" SrcFileId="1" StartOffset="399"/>
+</Header>
+<LocList>
+<Loc EndOffset="527" SrcFileId="1" StartOffset="399"/>
+</LocList>
+<StmntSeq Intrnl_Id="18">
+<LocList>
+<Loc EndOffset="523" SrcFileId="1" StartOffset="481"/>
+</LocList>
+<BasicStmnt CovItemId="S3" CovItemPrefix="testing.TestUnitTestCase.java" Intrnl_Id="19">
+<LocList>
+<Loc EndOffset="523" SrcFileId="1" StartOffset="481"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="161" HierarchyLvlTypeId="5" Intrnl_Id="20" Name="addnumbers">
+<Header>
+<Loc EndOffset="583" SrcFileId="1" StartOffset="533"/>
+</Header>
+<LocList>
+<Loc EndOffset="767" SrcFileId="1" StartOffset="533"/>
+</LocList>
+<StmntSeq Intrnl_Id="21">
+<LocList>
+<Loc EndOffset="632" SrcFileId="1" StartOffset="591"/>
+<Loc EndOffset="681" SrcFileId="1" StartOffset="637"/>
+<Loc EndOffset="723" SrcFileId="1" StartOffset="686"/>
+<Loc EndOffset="763" SrcFileId="1" StartOffset="727"/>
+</LocList>
+<BasicStmnt CovItemId="S4" CovItemPrefix="testing.TestUnitTestCase.java" Intrnl_Id="22">
+<LocList>
+<Loc EndOffset="632" SrcFileId="1" StartOffset="591"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S5" CovItemPrefix="testing.TestUnitTestCase.java" Intrnl_Id="23">
+<LocList>
+<Loc EndOffset="681" SrcFileId="1" StartOffset="637"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S6" CovItemPrefix="testing.TestUnitTestCase.java" Intrnl_Id="24">
+<LocList>
+<Loc EndOffset="723" SrcFileId="1" StartOffset="686"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S7" CovItemPrefix="testing.TestUnitTestCase.java" Intrnl_Id="25">
+<LocList>
+<Loc EndOffset="763" SrcFileId="1" StartOffset="727"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="162" HierarchyLvlTypeId="5" Intrnl_Id="26" Name="overloadSubtract">
+<Header>
+<Loc EndOffset="834" SrcFileId="1" StartOffset="773"/>
+</Header>
+<LocList>
+<Loc EndOffset="888" SrcFileId="1" StartOffset="773"/>
+</LocList>
+<StmntSeq Intrnl_Id="27">
+<LocList>
+<Loc EndOffset="884" SrcFileId="1" StartOffset="842"/>
+</LocList>
+<BasicStmnt CovItemId="S8" CovItemPrefix="testing.TestUnitTestCase.java" Intrnl_Id="28">
+<LocList>
+<Loc EndOffset="884" SrcFileId="1" StartOffset="842"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="163" HierarchyLvlTypeId="5" Intrnl_Id="29" Name="DivideTest">
+<Header>
+<Loc EndOffset="926" SrcFileId="1" StartOffset="894"/>
+</Header>
+<LocList>
+<Loc EndOffset="1125" SrcFileId="1" StartOffset="894"/>
+</LocList>
+<StmntSeq Intrnl_Id="30">
+<LocList>
+<Loc EndOffset="979" SrcFileId="1" StartOffset="934"/>
+<Loc EndOffset="1025" SrcFileId="1" StartOffset="983"/>
+<Loc EndOffset="1075" SrcFileId="1" StartOffset="1029"/>
+<Loc EndOffset="1121" SrcFileId="1" StartOffset="1079"/>
+</LocList>
+<BasicStmnt CovItemId="S9" CovItemPrefix="testing.TestUnitTestCase.java" Intrnl_Id="31">
+<LocList>
+<Loc EndOffset="979" SrcFileId="1" StartOffset="934"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S10" CovItemPrefix="testing.TestUnitTestCase.java" Intrnl_Id="32">
+<LocList>
+<Loc EndOffset="1025" SrcFileId="1" StartOffset="983"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S11" CovItemPrefix="testing.TestUnitTestCase.java" Intrnl_Id="33">
+<LocList>
+<Loc EndOffset="1075" SrcFileId="1" StartOffset="1029"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S12" CovItemPrefix="testing.TestUnitTestCase.java" Intrnl_Id="34">
+<LocList>
+<Loc EndOffset="1121" SrcFileId="1" StartOffset="1079"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="169" HierarchyLvlTypeId="4" Intrnl_Id="35" Name="calculator">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="167" HierarchyLvlTypeId="6" Intrnl_Id="36" Name="Calculator">
+<Header>
+<Loc EndOffset="46" SrcFileId="2" StartOffset="23"/>
+</Header>
+<LocList>
+<Loc EndOffset="991" SrcFileId="2" StartOffset="23"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="165" HierarchyLvlTypeId="5" Intrnl_Id="37" Name="add">
+<Header>
+<Loc EndOffset="270" SrcFileId="2" StartOffset="210"/>
+</Header>
+<LocList>
+<Loc EndOffset="574" SrcFileId="2" StartOffset="210"/>
+</LocList>
+<StmntSeq Intrnl_Id="38">
+<LocList>
+<Loc EndOffset="319" SrcFileId="2" StartOffset="291"/>
+<Loc EndOffset="446" SrcFileId="2" StartOffset="324"/>
+<Loc EndOffset="536" SrcFileId="2" StartOffset="278"/>
+<Loc EndOffset="570" SrcFileId="2" StartOffset="540"/>
+</LocList>
+<BasicStmnt CovItemId="S2" CovItemPrefix="calculator.Calculator.java" Intrnl_Id="39">
+<LocList>
+<Loc EndOffset="319" SrcFileId="2" StartOffset="291"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S3" CovItemPrefix="calculator.Calculator.java" Intrnl_Id="40">
+<Branch CovItemId="B2" CovItemPrefix="calculator.Calculator.java" Implct="false" Intrnl_Id="41">
+<Cond/>
+<LocList>
+<Loc EndOffset="393" SrcFileId="2" StartOffset="360"/>
+</LocList>
+<StmntSeq Intrnl_Id="42">
+<LocList>
+<Loc EndOffset="387" SrcFileId="2" StartOffset="368"/>
+</LocList>
+<BasicStmnt CovItemId="S4" CovItemPrefix="calculator.Calculator.java" Intrnl_Id="43">
+<LocList>
+<Loc EndOffset="387" SrcFileId="2" StartOffset="368"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B3" CovItemPrefix="calculator.Calculator.java" Implct="false" Intrnl_Id="44">
+<Cond>
+<Loc EndOffset="402" SrcFileId="2" StartOffset="398"/>
+</Cond>
+<LocList>
+<Loc EndOffset="446" SrcFileId="2" StartOffset="407"/>
+</LocList>
+<StmntSeq Intrnl_Id="45">
+<LocList>
+<Loc EndOffset="440" SrcFileId="2" StartOffset="414"/>
+</LocList>
+<BasicStmnt CovItemId="S5" CovItemPrefix="calculator.Calculator.java" Intrnl_Id="46">
+<LocList>
+<Loc EndOffset="440" SrcFileId="2" StartOffset="414"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="326" SrcFileId="2" StartOffset="324"/>
+<LocList>
+<Loc EndOffset="446" SrcFileId="2" StartOffset="324"/>
+</LocList>
+<RootTerm CovItemId="C1" CovItemPrefix="calculator.Calculator.java" Intrnl_Id="47">
+<OpTerm BooleanOpId="3" Intrnl_Id="48">
+<BasicBoolTerm Intrnl_Id="49">
+<LocList>
+<Loc EndOffset="354" SrcFileId="2" StartOffset="329"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="329" SrcFileId="2" StartOffset="328"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+<CondStmnt CovItemId="S1" CovItemPrefix="calculator.Calculator.java" Intrnl_Id="50">
+<Branch CovItemId="B1" CovItemPrefix="calculator.Calculator.java" Implct="true" Intrnl_Id="51">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="52">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B4" CovItemPrefix="calculator.Calculator.java" Implct="false" Intrnl_Id="53">
+<Cond>
+<Loc EndOffset="475" SrcFileId="2" StartOffset="455"/>
+</Cond>
+<LocList>
+<Loc EndOffset="536" SrcFileId="2" StartOffset="479"/>
+</LocList>
+<StmntSeq Intrnl_Id="54">
+<LocList>
+<Loc EndOffset="531" SrcFileId="2" StartOffset="485"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="calculator.Calculator.java" Intrnl_Id="55">
+<LocList>
+<Loc EndOffset="531" SrcFileId="2" StartOffset="485"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="281" SrcFileId="2" StartOffset="278"/>
+<LocList>
+<Loc EndOffset="536" SrcFileId="2" StartOffset="278"/>
+</LocList>
+</CondStmnt>
+<BasicStmnt CovItemId="S7" CovItemPrefix="calculator.Calculator.java" Intrnl_Id="56">
+<LocList>
+<Loc EndOffset="570" SrcFileId="2" StartOffset="540"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="166" HierarchyLvlTypeId="5" Intrnl_Id="57" Name="divide">
+<Header>
+<Loc EndOffset="739" SrcFileId="2" StartOffset="681"/>
+</Header>
+<LocList>
+<Loc EndOffset="985" SrcFileId="2" StartOffset="681"/>
+</LocList>
+<StmntSeq Intrnl_Id="58">
+<LocList>
+<Loc EndOffset="851" SrcFileId="2" StartOffset="761"/>
+<Loc EndOffset="885" SrcFileId="2" StartOffset="856"/>
+<Loc EndOffset="981" SrcFileId="2" StartOffset="747"/>
+</LocList>
+<CondStmnt CovItemId="S9" CovItemPrefix="calculator.Calculator.java" Intrnl_Id="59">
+<Branch CovItemId="B6" CovItemPrefix="calculator.Calculator.java" Implct="false" Intrnl_Id="60">
+<Cond/>
+<LocList>
+<Loc EndOffset="851" SrcFileId="2" StartOffset="787"/>
+</LocList>
+<StmntSeq Intrnl_Id="61">
+<LocList>
+<Loc EndOffset="845" SrcFileId="2" StartOffset="794"/>
+</LocList>
+<BasicStmnt CovItemId="S10" CovItemPrefix="calculator.Calculator.java" Intrnl_Id="62">
+<LocList>
+<Loc EndOffset="845" SrcFileId="2" StartOffset="794"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B7" CovItemPrefix="calculator.Calculator.java" Implct="true" Intrnl_Id="63">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="64">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="763" SrcFileId="2" StartOffset="761"/>
+<LocList>
+<Loc EndOffset="851" SrcFileId="2" StartOffset="761"/>
+</LocList>
+<RootTerm CovItemId="C2" CovItemPrefix="calculator.Calculator.java" Intrnl_Id="65">
+<BasicBoolTerm Intrnl_Id="66">
+<LocList>
+<Loc EndOffset="781" SrcFileId="2" StartOffset="765"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S11" CovItemPrefix="calculator.Calculator.java" Intrnl_Id="67">
+<LocList>
+<Loc EndOffset="885" SrcFileId="2" StartOffset="856"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S8" CovItemPrefix="calculator.Calculator.java" Intrnl_Id="68">
+<Branch CovItemId="B5" CovItemPrefix="calculator.Calculator.java" Implct="true" Intrnl_Id="69">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="70">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B8" CovItemPrefix="calculator.Calculator.java" Implct="false" Intrnl_Id="71">
+<Cond>
+<Loc EndOffset="913" SrcFileId="2" StartOffset="894"/>
+</Cond>
+<LocList>
+<Loc EndOffset="981" SrcFileId="2" StartOffset="917"/>
+</LocList>
+<StmntSeq Intrnl_Id="72">
+<LocList>
+<Loc EndOffset="976" SrcFileId="2" StartOffset="923"/>
+</LocList>
+<BasicStmnt CovItemId="S12" CovItemPrefix="calculator.Calculator.java" Intrnl_Id="73">
+<LocList>
+<Loc EndOffset="976" SrcFileId="2" StartOffset="923"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="750" SrcFileId="2" StartOffset="747"/>
+<LocList>
+<Loc EndOffset="981" SrcFileId="2" StartOffset="747"/>
+</LocList>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</MASTRoot>
+<TestSession Comment="" Date="1416406214557" Name="2014-nov-19 15:10:14">
+<TestCase Comment="" Date="1415351218972" Name="testing.TestUnitTestCase:addnumbers">
+<CovList>
+<CovPrefix CovItemPrefix="calculator.Calculator.java">
+<Cov CovItemId="B1" Value="4"/>
+<Cov CovItemId="B2" Value="4"/>
+<Cov CovItemId="S1" Value="4"/>
+<Cov CovItemId="S2" Value="4"/>
+<Cov CovItemId="S3" Value="4"/>
+<Cov CovItemId="S4" Value="4"/>
+</CovPrefix>
+<CovPrefix CovItemPrefix="testing.TestUnitTestCase.java">
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S4" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+<Cov CovItemId="S7" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="calculator.Calculator.java">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="4"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList/>
+<MetaDataList>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel161">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAQAAAAE"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel165">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAIAAAAF"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel158">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAB"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="" Date="1415351218982" Name="testing.TestUnitTestCase:DivideTest">
+<CovList>
+<CovPrefix CovItemPrefix="calculator.Calculator.java">
+<Cov CovItemId="B5" Value="4"/>
+<Cov CovItemId="B7" Value="4"/>
+<Cov CovItemId="S11" Value="4"/>
+<Cov CovItemId="S8" Value="4"/>
+<Cov CovItemId="S9" Value="4"/>
+</CovPrefix>
+<CovPrefix CovItemPrefix="testing.TestUnitTestCase.java">
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S10" Value="1"/>
+<Cov CovItemId="S11" Value="1"/>
+<Cov CovItemId="S12" Value="1"/>
+<Cov CovItemId="S9" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="calculator.Calculator.java">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="0" Value="4"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList/>
+<MetaDataList>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel163">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAQAAAAE"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel158">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAB"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel166">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAD"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="" Date="1415351218984" Name="testing.TestUnitTestCase:overloadAdd">
+<CovList>
+<CovPrefix CovItemPrefix="calculator.Calculator.java">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B3" Value="1"/>
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+</CovPrefix>
+<CovPrefix CovItemPrefix="testing.TestUnitTestCase.java">
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="calculator.Calculator.java">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="1" Value="1"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList/>
+<MetaDataList>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel160">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAB"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel165">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAIAAAAF"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel158">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAB"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="" Date="1415351218984" Name="testing.TestUnitTestCase:shouldCreateInstance">
+<CovList>
+<CovPrefix CovItemPrefix="testing.TestUnitTestCase.java">
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel159">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAB"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel158">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAB"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="" Date="1415351218985" Name="testing.TestUnitTestCase:overloadSubtract">
+<CovList>
+<CovPrefix CovItemPrefix="calculator.Calculator.java">
+<Cov CovItemId="B5" Value="1"/>
+<Cov CovItemId="B7" Value="1"/>
+<Cov CovItemId="S11" Value="1"/>
+<Cov CovItemId="S8" Value="1"/>
+<Cov CovItemId="S9" Value="1"/>
+</CovPrefix>
+<CovPrefix CovItemPrefix="testing.TestUnitTestCase.java">
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S8" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="calculator.Calculator.java">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="0" Value="1"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList/>
+<MetaDataList>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel162">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAB"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel158">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAB"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel166">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAD"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<MetaDataList/>
+</TestSession>
+<TestSession Comment="" Date="1416407277898" Name="2014-nov-19 15:27:57">
+<TestCase Comment="" Date="1415351218972" Name="testing.TestUnitTestCase:addnumbers">
+<CovList>
+<CovPrefix CovItemPrefix="calculator.Calculator.java">
+<Cov CovItemId="B1" Value="4"/>
+<Cov CovItemId="B2" Value="4"/>
+<Cov CovItemId="S1" Value="4"/>
+<Cov CovItemId="S2" Value="4"/>
+<Cov CovItemId="S3" Value="4"/>
+<Cov CovItemId="S4" Value="4"/>
+</CovPrefix>
+<CovPrefix CovItemPrefix="testing.TestUnitTestCase.java">
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S4" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+<Cov CovItemId="S7" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="calculator.Calculator.java">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="4"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1415351218982" Name="testing.TestUnitTestCase:DivideTest">
+<CovList>
+<CovPrefix CovItemPrefix="calculator.Calculator.java">
+<Cov CovItemId="B5" Value="4"/>
+<Cov CovItemId="B7" Value="4"/>
+<Cov CovItemId="S11" Value="4"/>
+<Cov CovItemId="S8" Value="4"/>
+<Cov CovItemId="S9" Value="4"/>
+</CovPrefix>
+<CovPrefix CovItemPrefix="testing.TestUnitTestCase.java">
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S10" Value="1"/>
+<Cov CovItemId="S11" Value="1"/>
+<Cov CovItemId="S12" Value="1"/>
+<Cov CovItemId="S9" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="calculator.Calculator.java">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="0" Value="4"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList/>
+<MetaDataList>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel163">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAQAAAAE"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel158">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAB"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel166">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAD"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="" Date="1415351218984" Name="testing.TestUnitTestCase:overloadAdd">
+<CovList>
+<CovPrefix CovItemPrefix="calculator.Calculator.java">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B3" Value="1"/>
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+</CovPrefix>
+<CovPrefix CovItemPrefix="testing.TestUnitTestCase.java">
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="calculator.Calculator.java">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="1" Value="1"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1415351218984" Name="testing.TestUnitTestCase:shouldCreateInstance">
+<CovList>
+<CovPrefix CovItemPrefix="testing.TestUnitTestCase.java">
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1415351218985" Name="testing.TestUnitTestCase:overloadSubtract">
+<CovList>
+<CovPrefix CovItemPrefix="calculator.Calculator.java">
+<Cov CovItemId="B5" Value="1"/>
+<Cov CovItemId="B7" Value="1"/>
+<Cov CovItemId="S11" Value="1"/>
+<Cov CovItemId="S8" Value="1"/>
+<Cov CovItemId="S9" Value="1"/>
+</CovPrefix>
+<CovPrefix CovItemPrefix="testing.TestUnitTestCase.java">
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S8" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="calculator.Calculator.java">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="0" Value="1"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<MetaDataList/>
+</TestSession>
+<TestSession Comment="" Date="1416407321052" Name="2014-nov-19 15:28:41">
+<TestCase Comment="" Date="1415351218972" Name="testing.TestUnitTestCase:addnumbers">
+<CovList>
+<CovPrefix CovItemPrefix="calculator.Calculator.java">
+<Cov CovItemId="B1" Value="4"/>
+<Cov CovItemId="B2" Value="4"/>
+<Cov CovItemId="S1" Value="4"/>
+<Cov CovItemId="S2" Value="4"/>
+<Cov CovItemId="S3" Value="4"/>
+<Cov CovItemId="S4" Value="4"/>
+</CovPrefix>
+<CovPrefix CovItemPrefix="testing.TestUnitTestCase.java">
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S4" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+<Cov CovItemId="S7" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="calculator.Calculator.java">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="4"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList/>
+<MetaDataList>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel161">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAQAAAAE"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel165">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAIAAAAF"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel158">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAB"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="" Date="1415351218982" Name="testing.TestUnitTestCase:DivideTest">
+<CovList>
+<CovPrefix CovItemPrefix="calculator.Calculator.java">
+<Cov CovItemId="B5" Value="4"/>
+<Cov CovItemId="B7" Value="4"/>
+<Cov CovItemId="S11" Value="4"/>
+<Cov CovItemId="S8" Value="4"/>
+<Cov CovItemId="S9" Value="4"/>
+</CovPrefix>
+<CovPrefix CovItemPrefix="testing.TestUnitTestCase.java">
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S10" Value="1"/>
+<Cov CovItemId="S11" Value="1"/>
+<Cov CovItemId="S12" Value="1"/>
+<Cov CovItemId="S9" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="calculator.Calculator.java">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="0" Value="4"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1415351218984" Name="testing.TestUnitTestCase:overloadAdd">
+<CovList>
+<CovPrefix CovItemPrefix="calculator.Calculator.java">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B3" Value="1"/>
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+</CovPrefix>
+<CovPrefix CovItemPrefix="testing.TestUnitTestCase.java">
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="calculator.Calculator.java">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="1" Value="1"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList/>
+<MetaDataList>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel160">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAB"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel165">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAIAAAAF"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel158">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAB"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="" Date="1415351218984" Name="testing.TestUnitTestCase:shouldCreateInstance">
+<CovList>
+<CovPrefix CovItemPrefix="testing.TestUnitTestCase.java">
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel159">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAB"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel158">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAB"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="" Date="1415351218985" Name="testing.TestUnitTestCase:overloadSubtract">
+<CovList>
+<CovPrefix CovItemPrefix="calculator.Calculator.java">
+<Cov CovItemId="B5" Value="1"/>
+<Cov CovItemId="B7" Value="1"/>
+<Cov CovItemId="S11" Value="1"/>
+<Cov CovItemId="S8" Value="1"/>
+<Cov CovItemId="S9" Value="1"/>
+</CovPrefix>
+<CovPrefix CovItemPrefix="testing.TestUnitTestCase.java">
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S8" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="calculator.Calculator.java">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="0" Value="1"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList/>
+<MetaDataList>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel162">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAB"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel158">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAB"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="StatementCoverage.getCoverage_HierarchyLevel166">
+<MetaData Base64="rO0ABXNyAC1vcmcuY29kZWNvdmVyLm1ldHJpY3MuY292ZXJhZ2UuQ292ZXJhZ2VSZXN1bHQPE7sp&#10;At1+KwIAAkkADGNvdmVyZWRJdGVtc0kACnRvdGFsSXRlbXN4cAAAAAEAAAAD"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<MetaDataList/>
+</TestSession>
+</TestSessionContainer>

@@ -8,7 +8,8 @@ import org.junit.Test;
 
 import calculator.Calculator;
 
-public class TestUnitTestCase {
+public class TestUnitTestCase 
+{
 
 	private Calculator c;
 
@@ -36,6 +37,7 @@ public class TestUnitTestCase {
 		assertEquals(4.50, c.add(2.25, 2.25), 0); 
 		assertEquals(10.25, c.add(5.125, 5.125), 0); 
 		assertEquals(10.5, c.add(5, 5.5), 0);
+		assertEquals(-10, c.add(-5, -5), 0);
 	}
 	
 	@Test (expected=Error.class)
@@ -47,6 +49,7 @@ public class TestUnitTestCase {
 	@Test
 	public void DivideTest()
 	{
+		Assert.assertEquals(-6, -6, c.divide(-36,6));
 		Assert.assertEquals(6, 6, c.divide(36,6));
 		Assert.assertEquals(12, 12, c.divide(120,10));
 		Assert.assertEquals(5, 5, c.divide(0, 5));
