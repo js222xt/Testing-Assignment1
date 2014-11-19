@@ -1,6 +1,7 @@
 package testing;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -53,6 +54,46 @@ public class TestUnitTestCase
 		Assert.assertEquals(6, 6, c.divide(36,6));
 		Assert.assertEquals(12, 12, c.divide(120,10));
 		Assert.assertEquals(5, 5, c.divide(0, 5));
+	}
+	
+
+	
+	
+	
+	
+	//js222xt
+	@Test
+	public void shouldMultiply(){
+		double delta = 0;
+		assertEquals(10.0, c.multiply(2.0,5.0), delta);
+		assertEquals(-10.0, c.multiply(2.0,-5.0), delta);
+		assertEquals(0.0, c.multiply(-2.0,0.0), delta);
+	}
+	
+	//js222xt
+	@Test(expected = RuntimeException.class)
+	public void shouldThrowExceptionMultiply(){
+		c.multiply(Double.MAX_VALUE,5.0);
+	}
+	
+	//js222xt
+	@Test
+	public void shouldSubstractPositive(){
+		double delta = 0;
+		assertEquals(10.0, c.sub(15.0,5.0), delta);
+	}
+	
+	//js222xt
+	@Test
+	public void shouldSubstractNegative(){
+		double delta = 0;
+		assertEquals(-10.0, c.sub(0.0,10.0), delta);
+	}
+	
+	//js222xt
+	@Test(expected = RuntimeException.class)
+	public void shouldThrowExceptionSub(){
+		c.sub(Double.MIN_VALUE,Double.NEGATIVE_INFINITY);
 	}
 	
 

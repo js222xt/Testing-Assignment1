@@ -3,7 +3,7 @@ package calculator;
 public class Calculator 
 {
 	/**
-	 * Adds two numbers 
+	 * Adds two numbers - rj222dq
 	 * @param num1 number 1
 	 * @param num2 number 2
 	 * @return result of adding the two numbers
@@ -27,7 +27,7 @@ public class Calculator
 	}
 	
 	/**
-	 * Divide to numbers
+	 * Divide to numbers - rj222dq
 	 * @param numerator
 	 * @param denominator
 	 * @return result
@@ -45,6 +45,34 @@ public class Calculator
 		catch (Exception e)
 		{
 			throw new RuntimeException("Error: " + e.toString());
+		}
+	}
+	
+	
+	//js222xt
+	public double multiply(double a, double b){
+		try{
+			double res = a * b;
+			if(!Double.isInfinite(res)){
+				return res;
+			}
+			else{
+				throw new RuntimeException("Double is Infinite");
+			}			
+		}
+		catch(Exception e){
+			throw new RuntimeException(e.getMessage());
+		}		
+	}
+
+	//js222xt
+	public double sub(double a, double b) {
+		double res = a - b;
+		if(!Double.isInfinite(res)){
+			return res;
+		}
+		else{
+			throw new RuntimeException("Double is Infinite");
 		}
 	}
 	
