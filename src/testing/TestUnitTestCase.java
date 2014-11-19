@@ -82,8 +82,8 @@ public class TestUnitTestCase {
 	//js222xt
 	@Test
 	public void shouldMockSuperCalculation(){
-		cMock.superCalculation(10.0,5.0,40.0,5.0,6.0);
 		Calculator cMock = mock(Calculator.class);
+		cMock.superCalculation(10.0,5.0,40.0,5.0,6.0);
 		verify(cMock).sub(10.0,5.0);
 		verify(cMock).triC(10.0,5.0);
 		verify(cMock).recArea(40.0,5.0);
