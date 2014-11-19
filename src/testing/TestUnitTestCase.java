@@ -11,6 +11,7 @@ import calculator.Calculator;
 public class TestUnitTestCase {
 
 	private Calculator c;
+	private Calculator cMock = mock(Calculator.class);
 	
 	@Before
 	public void initiate()
@@ -78,15 +79,5 @@ public class TestUnitTestCase {
 	public void shouldThrowExceptionTriC(){
 		c.triC(Double.MAX_VALUE,4.0);
 	}
-	
-	//js222xt
-	@Test
-	public void shouldMockSuperCalculation(){
-		Calculator cMock = mock(Calculator.class);
-		cMock.superCalculation(10.0,5.0,40.0,5.0,6.0);
-		verify(cMock).sub(10.0,5.0);
-		verify(cMock).triC(10.0,5.0);
-		verify(cMock).recArea(40.0,5.0);
-		verify(cMock).multiply(5.0,6.0);
-	}
+
 }

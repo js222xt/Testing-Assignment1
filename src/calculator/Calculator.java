@@ -44,5 +44,15 @@ public class Calculator
 			throw new RuntimeException("Double is Infinite");
 		}
 	}
+
+	public double superCalculation(double d, double e, double f, double g,
+			double h) {
+		double ret = 0.0;
+		ret += this.sub(d,g);
+		ret += this.triC(d,e);
+		ret += this.recArea(f,g);
+		ret += this.multiply(g,h);
+		return ret;
+	}
 	
 }
