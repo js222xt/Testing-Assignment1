@@ -1,7 +1,5 @@
 package calculator;
 
-import Calculator;
-
 import java.io.FileInputStream; 
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -41,7 +39,11 @@ public class CalculatorManager
 	 */
 	private void saveResult(String saveStr)
 	{
+		// Skriver ut till användaren
+		System.out.println(saveStr);
+		// Lägger till strängen till listan
 		results.add(saveStr);
+		// Sparar strängen till fil
 		saveToDisk();
 	}
 	
@@ -127,15 +129,6 @@ public class CalculatorManager
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public void start()
 	{
 
@@ -178,11 +171,11 @@ public class CalculatorManager
 				}
 				catch(Exception e){
 					System.out.println("Not in range, try again\n:");
+					System.out.println("Error: " + e.toString());
 				}
 			}
 			// Läser in nummer från användaren
-			readNumbers(scanner);
-			scanner.close();
+			readNumbers(scanner); 
 			
 			switch (type) {
 			case 1:
@@ -214,9 +207,7 @@ public class CalculatorManager
 		num1 = getDouble(scanner, true);
 		
 		System.out.print("Enter second number:");
-		num2 = getDouble(scanner, true);
-		
-		scanner.close();
+		num2 = getDouble(scanner, true); 
 	}
 	
 	private double getDouble(Scanner scanner, boolean allowZero) {

@@ -8,11 +8,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import calculator.Calculator;
+import calculator.CalculatorManager;
 
 public class TestUnitTestCase 
 {
 
 	private Calculator c;
+	private CalculatorManager calcMngr;
 
 	@Before
 	public void initiate()
