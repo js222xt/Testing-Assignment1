@@ -10,52 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator 
-{
-	List<String>  results = new ArrayList<String>();
-	private String filename = "results.benja";
-	
-	public Calculator(){
-		readFromDisk();
-	}
-	
-	private void saveResult(String res){
-		results.add(res);
-		saveToDisk();
-	}
-	
-	private void saveToDisk(){
-		// Save to disk
-		ObjectOutputStream out;
-		try {
-			out = new ObjectOutputStream(new FileOutputStream(filename));
-		    out.writeObject(results);
-		    out.close();
-		} catch (FileNotFoundException e) {
-		} catch (IOException e) {
-		}
-	}
-	
-	private void readFromDisk(){
-		ObjectInputStream in;
-		try {
-			in = new ObjectInputStream(new FileInputStream(filename));
-		    try {
-				results = (List<String>) in.readObject();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		    in.close();
-		} catch (FileNotFoundException e) {
-		} catch (IOException e) {
-		}
-	}
-	
-	public List<String> getResults(){
-		return results;
-	}
-	
-	
+{ 
 	/**
 	 * Adds two numbers - rj222dq
 	 * @param num1 number 1
@@ -70,7 +25,6 @@ public class Calculator
 			double result = num1 + num2;
 			if (!Double.isInfinite(result))
 			{ 
-				saveResult("Add: " + num1 + "+" + num2 +" = " + result);
 				return num1 + num2;
 			}
 		}
@@ -95,49 +49,34 @@ public class Calculator
 			{
 				throw new RuntimeException("Denominator is zero!");
 			}
-			double result = numerator/denominator;
-			saveResult("Divide: " + numerator + "/" + denominator +" = " + result);
-			
-			return result;
+			return numerator/denominator;
 		}
-		catch (Exception e)
+		catch (Exception ex)
 		{
-			throw new RuntimeException("Error: " + e.toString());
+			throw new RuntimeException("Error: " + ex.toString());
 		}
 	}
 	
 	
 	//js222xt
-		public double multiply(double a, double b){
-			try{
-				double res = a * b;
-				if(!Double.isInfinite(res)){
-					saveResult("Multiply: " + a + "*" + b +" = " + res);
-					return res;
-				}
-				else{
-					throw new RuntimeException("Double is Infinite");
-				}			
+	public double multiply(double a, double b){
+		try{ 
+			if(!Double.isInfinite(a * b)){
+				return a * b;
 			}
-			catch(Exception e){
-				throw new RuntimeException(e.getMessage());
-			}		
+			else{
+				throw new RuntimeException("Double is Infinite");
+			}			
 		}
-
-	
-	//js222xt
-	public double recArea(double length, double hight) {
-		double res = multiply(length, hight);
-		saveResult("Area: " + length + " " + hight +" = " + res);
-		return res;
+		catch(Exception e){
+			throw new RuntimeException(e.getMessage());
+		}		
 	}
 
 	//js222xt
 	public double sub(double a, double b) {
-		double res = a - b;
-		if(!Double.isInfinite(res)){
-			saveResult("Substraction: " + a + "-" + b +" = " + res);
-			return res;
+		if(!Double.isInfinite(a - b)){
+			return a - b;
 		}
 		else{
 			throw new RuntimeException("Double is Infinite");
@@ -148,7 +87,6 @@ public class Calculator
 	public double triC(double a, double b) {
 		double res = Math.sqrt( Math.pow(a, 2) + Math.pow(b, 2) );
 		if(!Double.isInfinite(res)){
-			saveResult("Pythagoras: " + a + " " + b +" = " + res);
 			return res;
 		}
 		else{
