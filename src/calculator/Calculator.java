@@ -20,17 +20,9 @@ public class Calculator
 	 */
 	public double add(double num1, double num2) throws Exception
 	{
-		try
-		{
-			double result = num1 + num2;
-			if (!Double.isInfinite(result))
-			{ 
-				return num1 + num2;
-			}
-		}
-		catch (Exception ex)
-		{
-			System.out.println("Error: " + ex.toString());
+		if (!Double.isInfinite(num1 + num2))
+		{ 
+			return num1 + num2;
 		}
 		throw new Exception("Error.");
 	}
@@ -84,7 +76,7 @@ public class Calculator
 	}
 	
 	//js222xt
-	public double triC(double a, double b) {
+	public double pyth(double a, double b) {
 		double res = Math.sqrt( Math.pow(a, 2) + Math.pow(b, 2) );
 		if(!Double.isInfinite(res)){
 			return res;

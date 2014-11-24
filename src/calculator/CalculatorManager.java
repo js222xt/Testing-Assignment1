@@ -23,10 +23,10 @@ public class CalculatorManager
 	/**
 	 * Konstruktor
 	 */
-	public CalculatorManager()
+	public CalculatorManager(String filename)
 	{
 		calc = new Calculator();
-		filename = "results.benja";
+		this.filename = filename;
 		results = new ArrayList<String>();
 		num1 = 0;
 		num2 = 0;
@@ -116,8 +116,12 @@ public class CalculatorManager
 			}
 			else if (method.equals("pyth"))
 			{
-				result = calc.triC(num1, num2);
+				result = calc.pyth(num1, num2);
 				saveResult("Pythagoras: " + num1 + " " + num2 +" = " + result);
+			}
+			else
+			{
+				throw new RuntimeException("Error. No such method for calculate.");
 			}
 		}
 		catch (Exception ex) 
@@ -204,26 +208,24 @@ public class CalculatorManager
 	private void readNumbers(Scanner scanner) 
 	{
 		System.out.print("\n"+"Enter first number:");
-		num1 = getDouble(scanner, true);
+		num1 = getDouble(scanner);
 		
 		System.out.print("Enter second number:");
-		num2 = getDouble(scanner, true); 
+		num2 = getDouble(scanner); 
 	}
 	
-	private double getDouble(Scanner scanner, boolean allowZero) {
+	private double getDouble(Scanner scanner) {
 		double p1 = 0;
 		boolean isDouble = false;
 		while(!isDouble){
 			try{
 				p1 = Double.valueOf(scanner.nextLine());
-				if(!allowZero && p1 == 0){
-					throw new Exception();
-				}
 				isDouble = true;
 			}
 			catch(Exception e){
 				p1 = 0;
 				System.out.println("Not double, try again\n:");
+				System.out.println("Error: " + e.toString());
 			}
 		}
 		return p1;
