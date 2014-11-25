@@ -186,15 +186,18 @@ public class TestUnitTestCase
 		m.invoke(calcMngr);		
 	}
 	
-	@Test (expected=Exception.class)
+	@Test
 	public void testGetDoubleInvalidNumber() throws Exception
 	{
-		// reflection 
-        System.setIn(new ByteArrayInputStream("kuljul".getBytes()));
+		// reflection
+		byte[] buf = ("kuljul\n"
+				+ "11\n").getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
 		calcMngr = new CalculatorManager(new SaveManager(),"results.benja", new Scanner(System.in));
         m = calcMngr.getClass().getDeclaredMethod("getDouble");
         m.setAccessible(true); 
-		m.invoke(calcMngr);		
+		m.invoke(calcMngr);
+		assertTrue(outContent.toString().contains("Error"));
 	}
 
 	
@@ -420,7 +423,10 @@ public class TestUnitTestCase
 	@Test
 	public void testStartConvertNumber()
 	{
-		System.setIn(new ByteArrayInputStream("5".getBytes()));
+		byte[] buf = ("1\n"
+				+ "11\n"
+	               + "10\n").getBytes();
+		System.setIn(new ByteArrayInputStream(buf));
 		calcMngr = new CalculatorManager(new SaveManager(),"results.benja", new Scanner(System.in));
 		calcMngr.start();
 	}
@@ -428,9 +434,62 @@ public class TestUnitTestCase
 	@Test
 	public void testStartShowResults()
 	{
-		System.setIn(new ByteArrayInputStream("p".getBytes()));
+		byte[] buf = ("p\n"
+	               + "q\n").getBytes();
+		System.setIn(new ByteArrayInputStream(buf));
 		calcMngr = new CalculatorManager(new SaveManager(),"results.benja", new Scanner(System.in));
 		calcMngr.start();
 	}
 	
+	// CodeCover
+	@Test
+	public void testStartWrongNumber()
+	{
+		byte[] buf = ("6\n"
+	               + "1\n"
+				    + "1\n"
+	               + "1\n").getBytes();
+		System.setIn(new ByteArrayInputStream(buf));
+		calcMngr = new CalculatorManager(new SaveManager(),"results.benja", new Scanner(System.in));
+		calcMngr.start();
+		assertTrue(outContent.toString().contains("Wrong"));
+	}
+	
+	// CodeCover
+	@Test
+	public void testStartException()
+	{
+		byte[] buf = ("6e\n"
+	               + "1\n"
+				    + "1\n"
+	               + "1\n").getBytes();
+		System.setIn(new ByteArrayInputStream(buf));
+		calcMngr = new CalculatorManager(new SaveManager(),"results.benja", new Scanner(System.in));
+		calcMngr.start();
+		assertTrue(outContent.toString().contains("Wrong"));
+	}
+	
+	// CodeCover
+	@Test
+	public void testStartAllNumbers()
+	{
+		byte[] buf = ("1\n"
+	               + "1\n"
+				    + "1\n"
+	                + "2\n"
+		               + "1\n"
+					    + "1\n"
+		               +"3\n"
+		               + "1\n"
+					    + "1\n"
+					    +"4\n"
+			               + "1\n"
+						    + "1\n"
+			               +"5\n"
+			               + "1\n"
+						    + "1\n").getBytes();
+		System.setIn(new ByteArrayInputStream(buf));
+		calcMngr = new CalculatorManager(new SaveManager(),"results.benja", new Scanner(System.in));
+		calcMngr.start();
+	}
 }

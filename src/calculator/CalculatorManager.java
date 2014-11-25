@@ -124,40 +124,47 @@ public class CalculatorManager
 	{
 		int choosen = 0;
 		printInfo();
-		String str = this.scanner.nextLine();
-		
-		if (str.toLowerCase().matches("p"))
-		{
-			System.out.println("\nPrevious results:");
-			for (String string : results) 
+		boolean correct = false;
+		while(!correct){
+			String str = this.scanner.nextLine();
+			if (str.toLowerCase().matches("p"))
 			{
-				System.out.println(string);
+				System.out.println("\nPrevious results:");
+				for (String string : results) 
+				{
+					System.out.println(string);
+				}
+				printInfo();
 			}
-		}
-		else if (str.toLowerCase().matches("q"))
-		{
-			return;
-		}
-		else 
-		{
-			choosen = Integer.parseInt(str);				
-		}
-		// Läser in nummer från användaren
-		System.out.print("\n"+"Enter first number:");
-		num1 = getDouble();
-		
-		//System.out.print("Enter second number:");
-		//num2 = getDouble(); 
-		
-		// Bestämmer och aktiverar valet
-		if(choosen == 1 || choosen == 2 || choosen == 3 || choosen == 4 || choosen == 5)
-		{
-			choice(choosen);
-		}
-		else
-		{
-			System.out.println("Wrong number.");
-		}
+			else if (str.toLowerCase().matches("q"))
+			{
+				correct = true;
+				return;
+			}
+			else 
+			{
+				try{
+					choosen = Integer.parseInt(str);
+					// Bestämmer och aktiverar valet
+					if(choosen == 1 || choosen == 2 || choosen == 3 || choosen == 4 || choosen == 5)
+					{
+						correct = true;
+						System.out.println("Enter first number");
+						num1 = getDouble();
+						System.out.println("Enter second number");
+						num2 = getDouble();
+						choice(choosen);
+					}
+					else
+					{
+						System.out.println("Wrong number.");
+					}
+				}
+				catch(Exception e){
+					System.out.println("Wrong number.");
+				}	
+			}
+		}		
 	}
 
 	
@@ -180,7 +187,7 @@ public class CalculatorManager
 
 	
 	private void choice(Integer choice)
-	{		
+	{
 		switch (choice) {
 		case 1:
 			calculate("divide");
