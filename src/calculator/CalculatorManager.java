@@ -7,6 +7,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 import calculator.*;
 
 /**
@@ -20,16 +21,19 @@ public class CalculatorManager
 	private double num1, num2;
 	private List<String> results;
 	private SaveManager sm;
+	private String filename;
+	
 	/**
 	 * Konstruktor
 	 */
-	public CalculatorManager(SaveManager sm)
+	public CalculatorManager(SaveManager sm, String filename)
 	{
 		this.sm = sm;
+		this.filename = filename;
 		calc = new Calculator();
 		num1 = 0;
 		num2 = 0;
-		results = this.sm.readFromDisk();
+		results = this.sm.readFromDisk(this.filename);
 	}
 	
 	/**
@@ -43,7 +47,7 @@ public class CalculatorManager
 		// Lägger till strängen till listan
 		results.add(saveStr);
 		// Sparar strängen till fil
-		this.sm.saveToDisk();
+		this.sm.saveToDisk(this.filename);
 	}
 	
 

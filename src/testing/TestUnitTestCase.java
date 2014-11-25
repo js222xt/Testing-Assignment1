@@ -30,7 +30,7 @@ public class TestUnitTestCase
 	public void initiate() throws Exception
 	{
 		c = new Calculator();
-		calcMngr = new CalculatorManager(new SaveManager("results.benja"));
+		calcMngr = new CalculatorManager(new SaveManager(),"results.benja");
 	}
 	
 	// Testar Calculator-klassen
@@ -151,7 +151,7 @@ public class TestUnitTestCase
 	@Test
 	public void testSaveResultException() throws Exception
 	{ 
-        CalculatorManager calcMngrErrorObj = new CalculatorManager(new SaveManager("¤%&/error"));
+        CalculatorManager calcMngrErrorObj = new CalculatorManager(new SaveManager(),"¤%&/error");
         Field privateStringField = CalculatorManager.class.getDeclaredField("filename");
         privateStringField.setAccessible(true);
         String fieldValue = (String) privateStringField.get(calcMngrErrorObj);
@@ -253,6 +253,11 @@ public class TestUnitTestCase
 		assertEquals(5, result, 0);
 	}
 	
+	@Test
+	public void shouldTestMocking(){
+		SaveManager smMock = mock(SaveManager.class);
+		
+	}
 	
 	@Test 
 	public void testStart()

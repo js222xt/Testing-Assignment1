@@ -10,17 +10,15 @@ import java.util.List;
 public class SaveManager {
 
 	private List<String> results;
-	private String filename;
 	
-	public SaveManager(String filename){
+	public SaveManager(){
 		results = new ArrayList<String>();
-		this.filename = filename;
 	}
 	
 	/**
 	 * Läs sparad data från fil.
 	 */
-	public List<String> readFromDisk()
+	public List<String> readFromDisk(String filename)
 	{
 		try 
 		{
@@ -39,7 +37,7 @@ public class SaveManager {
 	/**
 	 * Spara listan med information till fil.
 	 */
-	public void saveToDisk()
+	public void saveToDisk(String filename)
 	{
 		try 
 		{
