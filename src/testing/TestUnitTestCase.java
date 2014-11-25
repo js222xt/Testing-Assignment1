@@ -3,6 +3,9 @@ package testing;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -22,6 +25,7 @@ public class TestUnitTestCase
 {
 	private Calculator c;
 	private CalculatorManager calcMngr;
+	private ByteArrayOutputStream outContent;
 	
 	// Reflection
 	private Method m;
@@ -33,6 +37,8 @@ public class TestUnitTestCase
 	{
 		c = new Calculator();
 		calcMngr = new CalculatorManager(new SaveManager(),"results.benja");
+		outContent = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outContent));
 	}
 	
 	// Testar Calculator-klassen
@@ -169,7 +175,7 @@ public class TestUnitTestCase
         m.invoke(calcMngr, parameters);  
 	}
 	
-	/*@Test
+	@Test
 	public void testReadNumbersAndGetDouble() throws Exception
 	{
 		// reflection
@@ -179,10 +185,11 @@ public class TestUnitTestCase
         m = calcMngr.getClass().getDeclaredMethod("readNumbers", parameterTypes);
         m.setAccessible(true);
         parameters = new Object[1];
-        
-		parameters[0] = new Scanner(System.in);
+        ByteArrayInputStream in = new ByteArrayInputStream("5".getBytes());
+        //System.setIn(in);
+		parameters[0] = new Scanner(in);
 		m.invoke(calcMngr, parameters);		
-	}*/
+	}
 	
 	@Test 
 	public void testCalculateException()
@@ -351,6 +358,14 @@ public class TestUnitTestCase
 		verify(smMock).saveToDisk("mock.mock", results);
 	}
 	
+
+	 @Test
+	 public void shouldThrowSaveManagerError(){
+	  SaveManager sm = new SaveManager();
+	  CalculatorManager cm = new CalculatorManager(sm, "");
+	  cm.calculate("add");
+	  assertTrue(outContent.toString().contains("Error: "));
+	 }
 	/*
 	@Test 
 	public void testStart()

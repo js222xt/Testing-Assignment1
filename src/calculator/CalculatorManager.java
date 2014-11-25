@@ -102,11 +102,76 @@ public class CalculatorManager
 		return result;
 	}
 	
+	/**
+	 * Skriver ut informationen till användaren
+	 */
+	private void printInfo()
+	{
+		System.out.println("Calculator");
+		System.out.println("1. Divide");
+		System.out.println("2. Add");
+		System.out.println("3. Substract");
+		System.out.println("4. Multiply");
+		System.out.println("5. Pythagoras quest");
+		System.out.println("To quit press: Q");
+		System.out.println("Previous results press: P");
+	}
 	
 	
+	public void start(Scanner scanner)
+	{
+		int choosen = 0;
+		printInfo();
+		String str = scanner.nextLine();
+		
+		if (str.toLowerCase().matches("p"))
+		{
+			System.out.println("\nPrevious results:");
+			for (String string : results) 
+			{
+				System.out.println(string);
+			}
+		}
+		else if (str.toLowerCase().matches("q"))
+		{
+			return;
+		}
+		else 
+		{
+			choosen = Integer.parseInt(str);
+				
+		}
+		// Läser in nummer från användaren
+		readNumbers(scanner); 
+		
+		// Bestämmer och aktiverar valet
+		choice(choosen);
+	}
+	
+	private void choice(int choice)
+	{		
+		switch (choice) {
+		case 1:
+			calculate("divide");
+			break;
+		case 2:
+			calculate("add");
+			break;
+		case 3:
+			calculate("sub");
+			break;
+		case 4:			
+			calculate("multiply");
+			break;
+		case 5:	
+			calculate("pyth");
+			break;
+		}
+	}
+	
+	/*
 	public void start()
 	{
-
 		Scanner scanner = new Scanner(System.in);
 		String quitS = "Q";
 		String preresult = "P";
@@ -171,6 +236,7 @@ public class CalculatorManager
 			}
 		}
 	}
+	*/
 
 	/**
 	 * Läser in nummer från användaren.

@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.Scanner;
+
 
 /**
  * Sätter i gång kalkylatorn.
@@ -12,6 +14,6 @@ public class MainCalculator
 	{
 		SaveManager sm = new SaveManager();
 		CalculatorManager calc = new CalculatorManager(sm, "results.benja");
-		calc.start();
+		calc.start(new Scanner(System.in));
 	}
 }
