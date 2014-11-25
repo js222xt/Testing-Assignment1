@@ -7,6 +7,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import calculator.*;
 
 /**
  * Syftet med klassen är att hantera "Calculator"-klassen.
@@ -16,21 +17,19 @@ import java.util.Scanner;
 public class CalculatorManager 
 {
 	private Calculator calc;
-	private List<String> results;
-	private String filename;
 	private double num1, num2;
-	
+	private List<String> results;
+	private SaveManager sm;
 	/**
 	 * Konstruktor
 	 */
-	public CalculatorManager(String filename)
+	public CalculatorManager(SaveManager sm)
 	{
+		this.sm = sm;
 		calc = new Calculator();
-		this.filename = filename;
-		results = new ArrayList<String>();
 		num1 = 0;
 		num2 = 0;
-		readFromDisk();
+		results = this.sm.readFromDisk();
 	}
 	
 	/**
@@ -44,43 +43,11 @@ public class CalculatorManager
 		// Lägger till strängen till listan
 		results.add(saveStr);
 		// Sparar strängen till fil
-		saveToDisk();
+		this.sm.saveToDisk();
 	}
 	
 
-	/**
-	 * Läs sparad data från fil.
-	 */
-	private void readFromDisk()
-	{
-		try 
-		{
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename));
-			results = (List<String>) in.readObject();
-		    in.close();
-		}
-	    catch (Exception ex) 
-	    {
-			System.out.println("Error: " + ex.toString());
-		}
-	}
 	
-	/**
-	 * Spara listan med information till fil.
-	 */
-	private void saveToDisk()
-	{
-		try 
-		{
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename));
-		    out.writeObject(results);
-		    out.close();
-		} 
-		catch (Exception ex) 
-		{
-			System.out.println("Error: " + ex.toString());
-		}
-	}
 	
 	/**
 	 * Räknar ut det användaren vill.

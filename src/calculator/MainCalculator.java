@@ -10,7 +10,8 @@ public class MainCalculator
 {
 	public static void main(String[] args) 
 	{
-		CalculatorManager calc = new CalculatorManager("results.benja");
+		SaveManager sm = new SaveManager("results.benja");
+		CalculatorManager calc = new CalculatorManager(sm);
 		calc.start();
 	}
 }
