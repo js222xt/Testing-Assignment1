@@ -5,6 +5,7 @@ import static org.mockito.Mockito.mock;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,6 +13,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.mockito.Mockito.*;
 import calculator.Calculator;
 import calculator.CalculatorManager;
 import calculator.SaveManager;
@@ -41,14 +43,14 @@ public class TestUnitTestCase
 		assertTrue(c instanceof Calculator);
 	}
 
-	// rj222dq
+	// rj222dq Boundry
 	@Test (expected=Exception.class)
 	public void overloadAdd() throws Exception
 	{ 
 		c.add(Double.MAX_VALUE, Double.MAX_VALUE);
 	}
 	
-	// rj222dq
+	// rj222dq Equivalence Partitioning
 	@Test 
 	public void addnumbers() throws Exception
 	{
@@ -65,7 +67,7 @@ public class TestUnitTestCase
 		Assert.assertEquals(true, c.divide(2, 9));
 	}
 	
-	// rj222dq
+	// rj222dq Equivalence Partitioning
 	@Test
 	public void DivideTest()
 	{
@@ -96,7 +98,7 @@ public class TestUnitTestCase
 		Assert.assertEquals(5, c.pyth(Double.MAX_VALUE +2, 4), 0);
 	}
 	
-	//js222xt
+	//js222xt Equivalence Partitioning
 	@Test
 	public void shouldMultiply(){
 		double delta = 0;
@@ -105,7 +107,7 @@ public class TestUnitTestCase
 		assertEquals(0.0, c.multiply(-2.0,0.0), delta);
 	}
 	
-	//js222xt
+	//js222xt Boundry
 	@Test(expected = RuntimeException.class)
 	public void shouldThrowExceptionMultiply(){
 		c.multiply(Double.MAX_VALUE,5.0);
@@ -125,7 +127,7 @@ public class TestUnitTestCase
 		assertEquals(-10.0, c.sub(0.0,10.0), delta);
 	}
 	
-	//js222xt
+	//js222xt Boundry
 	@Test(expected = RuntimeException.class)
 	public void shouldThrowExceptionSub(){
 		c.sub(Double.MIN_VALUE,Double.NEGATIVE_INFINITY);
@@ -167,7 +169,7 @@ public class TestUnitTestCase
         m.invoke(calcMngr, parameters);  
 	}
 	
-	@Test
+	/*@Test
 	public void testReadNumbersAndGetDouble() throws Exception
 	{
 		// reflection
@@ -180,7 +182,7 @@ public class TestUnitTestCase
         
 		parameters[0] = new Scanner(System.in);
 		m.invoke(calcMngr, parameters);		
-	}
+	}*/
 	
 	@Test 
 	public void testCalculateException()
@@ -253,16 +255,107 @@ public class TestUnitTestCase
 		assertEquals(5, result, 0);
 	}
 	
+	//js222xt, rj222dq
 	@Test
-	public void shouldTestMocking(){
+	public void shouldTestMockingAdd()throws Exception{ 
 		SaveManager smMock = mock(SaveManager.class);
-		
+		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock");
+		Field num1 = cm.getClass().getDeclaredField("num1");
+		num1.setAccessible(true);
+		num1.set(cm, 3);
+		Field num2 = cm.getClass().getDeclaredField("num2");
+		num2.setAccessible(true);
+		num2.set(cm, 4);
+		double result = (double) cm.calculate("add");
+		List<String> results = new ArrayList<String>();
+		when(smMock.readFromDisk("mock.mock")).thenReturn(results);
+		verify(smMock).readFromDisk("mock.mock");
+		String saveStr = "Add: 3.0+4.0 = 7.0";
+		results.add(saveStr);
+		verify(smMock).saveToDisk("mock.mock", results);
 	}
 	
+	@Test
+	public void shouldTestMockingSub()throws Exception{ 
+		SaveManager smMock = mock(SaveManager.class);
+		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock");
+		Field num1 = cm.getClass().getDeclaredField("num1");
+		num1.setAccessible(true);
+		num1.set(cm, 3);
+		Field num2 = cm.getClass().getDeclaredField("num2");
+		num2.setAccessible(true);
+		num2.set(cm, 4);
+		double result = (double) cm.calculate("sub");
+		List<String> results = new ArrayList<String>();
+		when(smMock.readFromDisk("mock.mock")).thenReturn(results);
+		verify(smMock).readFromDisk("mock.mock");
+		String saveStr = "Substraction: 3.0-4.0 = -1.0";
+		results.add(saveStr);
+		verify(smMock).saveToDisk("mock.mock", results);
+	}
+	
+	@Test
+	public void shouldTestMockingDivide()throws Exception{ 
+		SaveManager smMock = mock(SaveManager.class);
+		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock");
+		Field num1 = cm.getClass().getDeclaredField("num1");
+		num1.setAccessible(true);
+		num1.set(cm, 10);
+		Field num2 = cm.getClass().getDeclaredField("num2");
+		num2.setAccessible(true);
+		num2.set(cm, 2);
+		double result = (double) cm.calculate("divide");
+		List<String> results = new ArrayList<String>();
+		when(smMock.readFromDisk("mock.mock")).thenReturn(results);
+		verify(smMock).readFromDisk("mock.mock");
+		String saveStr = "Divide: 10.0/2.0 = 5.0";
+		results.add(saveStr);
+		verify(smMock).saveToDisk("mock.mock", results);
+	}
+	
+	@Test
+	public void shouldTestMockingMultiply()throws Exception{ 
+		SaveManager smMock = mock(SaveManager.class);
+		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock");
+		Field num1 = cm.getClass().getDeclaredField("num1");
+		num1.setAccessible(true);
+		num1.set(cm, 10);
+		Field num2 = cm.getClass().getDeclaredField("num2");
+		num2.setAccessible(true);
+		num2.set(cm, 2);
+		double result = (double) cm.calculate("multiply");
+		List<String> results = new ArrayList<String>();
+		when(smMock.readFromDisk("mock.mock")).thenReturn(results);
+		verify(smMock).readFromDisk("mock.mock");
+		String saveStr = "Multiply: 10.0*2.0 = 20.0";
+		results.add(saveStr);
+		verify(smMock).saveToDisk("mock.mock", results);
+	}
+	
+	@Test
+	public void shouldTestMockingPythagoras()throws Exception{ 
+		SaveManager smMock = mock(SaveManager.class);
+		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock");
+		Field num1 = cm.getClass().getDeclaredField("num1");
+		num1.setAccessible(true);
+		num1.set(cm, 3);
+		Field num2 = cm.getClass().getDeclaredField("num2");
+		num2.setAccessible(true);
+		num2.set(cm, 4);
+		double result = (double) cm.calculate("pyth");
+		List<String> results = new ArrayList<String>();
+		when(smMock.readFromDisk("mock.mock")).thenReturn(results);
+		verify(smMock).readFromDisk("mock.mock");
+		String saveStr = "Pythagoras: 3.0 4.0 = 5.0";
+		results.add(saveStr);
+		verify(smMock).saveToDisk("mock.mock", results);
+	}
+	
+	/*
 	@Test 
 	public void testStart()
 	{
 		calcMngr.start();
-	}
+	}*/
 	
 }

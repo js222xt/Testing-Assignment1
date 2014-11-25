@@ -47,7 +47,7 @@ public class CalculatorManager
 		// Lägger till strängen till listan
 		results.add(saveStr);
 		// Sparar strängen till fil
-		this.sm.saveToDisk(this.filename);
+		this.sm.saveToDisk(this.filename, results);
 	}
 	
 

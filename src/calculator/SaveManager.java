@@ -37,7 +37,7 @@ public class SaveManager {
 	/**
 	 * Spara listan med information till fil.
 	 */
-	public void saveToDisk(String filename)
+	public void saveToDisk(String filename, List<String> results)
 	{
 		try 
 		{
