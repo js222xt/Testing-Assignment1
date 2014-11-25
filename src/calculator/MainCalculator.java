@@ -13,7 +13,7 @@ public class MainCalculator
 	public static void main(String[] args) 
 	{
 		SaveManager sm = new SaveManager();
-		CalculatorManager calc = new CalculatorManager(sm, "results.benja");
-		calc.start(new Scanner(System.in));
+		CalculatorManager calc = new CalculatorManager(sm, "results.benja",	new Scanner(System.in));
+		calc.start();
 	}
 }

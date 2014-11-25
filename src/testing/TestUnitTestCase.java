@@ -36,7 +36,7 @@ public class TestUnitTestCase
 	public void initiate() throws Exception
 	{
 		c = new Calculator();
-		calcMngr = new CalculatorManager(new SaveManager(),"results.benja");
+		calcMngr = new CalculatorManager(new SaveManager(),"results.benja", new Scanner(System.in));
 		outContent = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outContent));
 	}
@@ -159,7 +159,7 @@ public class TestUnitTestCase
 	@Test
 	public void testSaveResultException() throws Exception
 	{ 
-        CalculatorManager calcMngrErrorObj = new CalculatorManager(new SaveManager(),"¤%&/error");
+        CalculatorManager calcMngrErrorObj = new CalculatorManager(new SaveManager(),"¤%&/error", new Scanner(System.in));
         Field privateStringField = CalculatorManager.class.getDeclaredField("filename");
         privateStringField.setAccessible(true);
         String fieldValue = (String) privateStringField.get(calcMngrErrorObj);
@@ -176,20 +176,40 @@ public class TestUnitTestCase
 	}
 	
 	@Test
-	public void testReadNumbersAndGetDouble() throws Exception
+	public void testGetDoubleValidNumber() throws Exception
 	{
-		// reflection
-		parameterTypes = new Class[1];
-        parameterTypes[0] = java.util.Scanner.class;
-        // calculator.CalculatorManager.getDouble(java.util.Scanner, java.lang.Boolean)
-        m = calcMngr.getClass().getDeclaredMethod("readNumbers", parameterTypes);
-        m.setAccessible(true);
-        parameters = new Object[1];
-        ByteArrayInputStream in = new ByteArrayInputStream("5".getBytes());
-        //System.setIn(in);
-		parameters[0] = new Scanner(in);
-		m.invoke(calcMngr, parameters);		
+		// reflection 
+        System.setIn(new ByteArrayInputStream("5".getBytes()));
+		calcMngr = new CalculatorManager(new SaveManager(),"results.benja", new Scanner(System.in));
+        m = calcMngr.getClass().getDeclaredMethod("getDouble");
+        m.setAccessible(true); 
+		m.invoke(calcMngr);		
 	}
+	
+	@Test (expected=Exception.class)
+	public void testGetDoubleInvalidNumber() throws Exception
+	{
+		// reflection 
+        System.setIn(new ByteArrayInputStream("kuljul".getBytes()));
+		calcMngr = new CalculatorManager(new SaveManager(),"results.benja", new Scanner(System.in));
+        m = calcMngr.getClass().getDeclaredMethod("getDouble");
+        m.setAccessible(true); 
+		m.invoke(calcMngr);		
+	}
+
+	
+	@Test
+	public void testPrintInfo() throws Exception
+	{
+		// reflection 
+	   SaveManager sm = new SaveManager();
+	   CalculatorManager cm = new CalculatorManager(sm, "file.test", new Scanner(System.in));
+	   Method m = cm.getClass().getDeclaredMethod("printInfo");
+	   m.setAccessible(true);
+	   m.invoke(cm);
+	   assertTrue(outContent.toString().contains("Calculator"));
+	}
+	
 	
 	@Test 
 	public void testCalculateException()
@@ -266,7 +286,7 @@ public class TestUnitTestCase
 	@Test
 	public void shouldTestMockingAdd()throws Exception{ 
 		SaveManager smMock = mock(SaveManager.class);
-		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock");
+		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock", new Scanner(System.in));
 		Field num1 = cm.getClass().getDeclaredField("num1");
 		num1.setAccessible(true);
 		num1.set(cm, 3);
@@ -285,7 +305,7 @@ public class TestUnitTestCase
 	@Test
 	public void shouldTestMockingSub()throws Exception{ 
 		SaveManager smMock = mock(SaveManager.class);
-		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock");
+		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock", new Scanner(System.in));
 		Field num1 = cm.getClass().getDeclaredField("num1");
 		num1.setAccessible(true);
 		num1.set(cm, 3);
@@ -304,7 +324,7 @@ public class TestUnitTestCase
 	@Test
 	public void shouldTestMockingDivide()throws Exception{ 
 		SaveManager smMock = mock(SaveManager.class);
-		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock");
+		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock", new Scanner(System.in));
 		Field num1 = cm.getClass().getDeclaredField("num1");
 		num1.setAccessible(true);
 		num1.set(cm, 10);
@@ -323,7 +343,7 @@ public class TestUnitTestCase
 	@Test
 	public void shouldTestMockingMultiply()throws Exception{ 
 		SaveManager smMock = mock(SaveManager.class);
-		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock");
+		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock", new Scanner(System.in));
 		Field num1 = cm.getClass().getDeclaredField("num1");
 		num1.setAccessible(true);
 		num1.set(cm, 10);
@@ -342,7 +362,7 @@ public class TestUnitTestCase
 	@Test
 	public void shouldTestMockingPythagoras()throws Exception{ 
 		SaveManager smMock = mock(SaveManager.class);
-		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock");
+		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock", new Scanner(System.in));
 		Field num1 = cm.getClass().getDeclaredField("num1");
 		num1.setAccessible(true);
 		num1.set(cm, 3);
@@ -362,15 +382,55 @@ public class TestUnitTestCase
 	 @Test
 	 public void shouldThrowSaveManagerError(){
 	  SaveManager sm = new SaveManager();
-	  CalculatorManager cm = new CalculatorManager(sm, "");
+	  CalculatorManager cm = new CalculatorManager(sm, "", new Scanner(System.in));
 	  cm.calculate("add");
 	  assertTrue(outContent.toString().contains("Error: "));
 	 }
-	/*
-	@Test 
-	public void testStart()
+	
+	 @Test
+	 public void testChoices() throws Exception
+	 {
+			// reflection
+			parameterTypes = new Class[1];
+	        parameterTypes[0] = java.lang.Integer.class;
+	        m = calcMngr.getClass().getDeclaredMethod("choice", parameterTypes);
+	        m.setAccessible(true);
+	        parameters = new Object[1];
+	        parameters[0] = 1;
+			m.invoke(calcMngr, parameters);	
+			parameters[0] = 2;
+			m.invoke(calcMngr, parameters);	
+			parameters[0] = 3;
+			m.invoke(calcMngr, parameters);	
+			parameters[0] = 4;
+			m.invoke(calcMngr, parameters);	
+			parameters[0] = 5;
+			m.invoke(calcMngr, parameters);	
+	 }
+	 
+	
+	@Test
+	public void testStartQuit()
 	{
+		System.setIn(new ByteArrayInputStream("q".getBytes()));
+		calcMngr = new CalculatorManager(new SaveManager(),"results.benja", new Scanner(System.in));
 		calcMngr.start();
-	}*/
+	}
+	
+	@Test
+	public void testStartConvertNumber()
+	{
+		System.setIn(new ByteArrayInputStream("5".getBytes()));
+		calcMngr = new CalculatorManager(new SaveManager(),"results.benja", new Scanner(System.in));
+		calcMngr.start();
+	}
+	
+	@Test
+	public void testStartShowResults()
+	{
+		System.setIn(new ByteArrayInputStream("p".getBytes()));
+		calcMngr = new CalculatorManager(new SaveManager(),"results.benja", new Scanner(System.in));
+		calcMngr.start();
+	}
 	
 }

@@ -22,12 +22,14 @@ public class CalculatorManager
 	private List<String> results;
 	private SaveManager sm;
 	private String filename;
+	private Scanner scanner;
 	
 	/**
 	 * Konstruktor
 	 */
-	public CalculatorManager(SaveManager sm, String filename)
+	public CalculatorManager(SaveManager sm, String filename, Scanner scanner)
 	{
+		this.scanner = scanner;
 		this.sm = sm;
 		this.filename = filename;
 		calc = new Calculator();
@@ -118,11 +120,11 @@ public class CalculatorManager
 	}
 	
 	
-	public void start(Scanner scanner)
+	public void start()
 	{
 		int choosen = 0;
 		printInfo();
-		String str = scanner.nextLine();
+		String str = this.scanner.nextLine();
 		
 		if (str.toLowerCase().matches("p"))
 		{
@@ -138,17 +140,46 @@ public class CalculatorManager
 		}
 		else 
 		{
-			choosen = Integer.parseInt(str);
-				
+			choosen = Integer.parseInt(str);				
 		}
 		// Läser in nummer från användaren
-		readNumbers(scanner); 
+		System.out.print("\n"+"Enter first number:");
+		num1 = getDouble();
+		
+		//System.out.print("Enter second number:");
+		//num2 = getDouble(); 
 		
 		// Bestämmer och aktiverar valet
-		choice(choosen);
+		if(choosen == 1 || choosen == 2 || choosen == 3 || choosen == 4 || choosen == 5)
+		{
+			choice(choosen);
+		}
+		else
+		{
+			System.out.println("Wrong number.");
+		}
 	}
+
 	
-	private void choice(int choice)
+	private double getDouble() {
+		double p1 = 0;
+		boolean isDouble = false;
+		while(!isDouble){
+			try{
+				p1 = Double.valueOf(this.scanner.nextLine());
+				isDouble = true;
+			}
+			catch(Exception e){
+				p1 = 0;
+				System.out.println("Not double, try again\n:");
+				System.out.println("Error: " + e.toString());
+			}
+		}
+		return p1;
+	}
+
+	
+	private void choice(Integer choice)
 	{		
 		switch (choice) {
 		case 1:
@@ -237,36 +268,6 @@ public class CalculatorManager
 		}
 	}
 	*/
-
-	/**
-	 * Läser in nummer från användaren.
-	 * @param scanner Scannerobjekt
-	 */
-	private void readNumbers(Scanner scanner) 
-	{
-		System.out.print("\n"+"Enter first number:");
-		num1 = getDouble(scanner);
-		
-		System.out.print("Enter second number:");
-		num2 = getDouble(scanner); 
-	}
-	
-	private double getDouble(Scanner scanner) {
-		double p1 = 0;
-		boolean isDouble = false;
-		while(!isDouble){
-			try{
-				p1 = Double.valueOf(scanner.nextLine());
-				isDouble = true;
-			}
-			catch(Exception e){
-				p1 = 0;
-				System.out.println("Not double, try again\n:");
-				System.out.println("Error: " + e.toString());
-			}
-		}
-		return p1;
-	}
 
 	
 
