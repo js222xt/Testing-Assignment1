@@ -288,97 +288,44 @@ public class TestUnitTestCase
 	//js222xt, rj222dq
 	@Test
 	public void shouldTestMockingAdd()throws Exception{ 
+		mockingHelper(3,4,"add","Add: 3.0+4.0 = 7.0");		
+	}
+	
+	private void mockingHelper(double num1, double num2, String type, String resultString)throws Exception{
 		SaveManager smMock = mock(SaveManager.class);
 		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock", new Scanner(System.in));
-		Field num1 = cm.getClass().getDeclaredField("num1");
-		num1.setAccessible(true);
-		num1.set(cm, 3);
-		Field num2 = cm.getClass().getDeclaredField("num2");
-		num2.setAccessible(true);
-		num2.set(cm, 4);
-		double result = (double) cm.calculate("add");
+		Field num1f = cm.getClass().getDeclaredField("num1");
+		num1f.setAccessible(true);
+		num1f.set(cm, num1);
+		Field num2f = cm.getClass().getDeclaredField("num2");
+		num2f.setAccessible(true);
+		num2f.set(cm, num2);
+		double result = (double) cm.calculate(type);
 		List<String> results = new ArrayList<String>();
 		when(smMock.readFromDisk("mock.mock")).thenReturn(results);
 		verify(smMock).readFromDisk("mock.mock");
-		String saveStr = "Add: 3.0+4.0 = 7.0";
-		results.add(saveStr);
+		results.add(resultString);
 		verify(smMock).saveToDisk("mock.mock", results);
 	}
 	
 	@Test
-	public void shouldTestMockingSub()throws Exception{ 
-		SaveManager smMock = mock(SaveManager.class);
-		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock", new Scanner(System.in));
-		Field num1 = cm.getClass().getDeclaredField("num1");
-		num1.setAccessible(true);
-		num1.set(cm, 3);
-		Field num2 = cm.getClass().getDeclaredField("num2");
-		num2.setAccessible(true);
-		num2.set(cm, 4);
-		double result = (double) cm.calculate("sub");
-		List<String> results = new ArrayList<String>();
-		when(smMock.readFromDisk("mock.mock")).thenReturn(results);
-		verify(smMock).readFromDisk("mock.mock");
-		String saveStr = "Substraction: 3.0-4.0 = -1.0";
-		results.add(saveStr);
-		verify(smMock).saveToDisk("mock.mock", results);
+	public void shouldTestMockingSub()throws Exception{
+		mockingHelper(3,4,"sub","Substraction: 3.0-4.0 = -1.0");
 	}
 	
 	@Test
-	public void shouldTestMockingDivide()throws Exception{ 
-		SaveManager smMock = mock(SaveManager.class);
-		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock", new Scanner(System.in));
-		Field num1 = cm.getClass().getDeclaredField("num1");
-		num1.setAccessible(true);
-		num1.set(cm, 10);
-		Field num2 = cm.getClass().getDeclaredField("num2");
-		num2.setAccessible(true);
-		num2.set(cm, 2);
-		double result = (double) cm.calculate("divide");
-		List<String> results = new ArrayList<String>();
-		when(smMock.readFromDisk("mock.mock")).thenReturn(results);
-		verify(smMock).readFromDisk("mock.mock");
-		String saveStr = "Divide: 10.0/2.0 = 5.0";
-		results.add(saveStr);
-		verify(smMock).saveToDisk("mock.mock", results);
+	public void shouldTestMockingDivide()throws Exception{
+		mockingHelper(10,2,"divide","Divide: 10.0/2.0 = 5.0");
 	}
 	
 	@Test
-	public void shouldTestMockingMultiply()throws Exception{ 
-		SaveManager smMock = mock(SaveManager.class);
-		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock", new Scanner(System.in));
-		Field num1 = cm.getClass().getDeclaredField("num1");
-		num1.setAccessible(true);
-		num1.set(cm, 10);
-		Field num2 = cm.getClass().getDeclaredField("num2");
-		num2.setAccessible(true);
-		num2.set(cm, 2);
-		double result = (double) cm.calculate("multiply");
-		List<String> results = new ArrayList<String>();
-		when(smMock.readFromDisk("mock.mock")).thenReturn(results);
-		verify(smMock).readFromDisk("mock.mock");
-		String saveStr = "Multiply: 10.0*2.0 = 20.0";
-		results.add(saveStr);
-		verify(smMock).saveToDisk("mock.mock", results);
+	public void shouldTestMockingMultiply()throws Exception{
+		mockingHelper(10,2,"multiply","Multiply: 10.0*2.0 = 20.0");
 	}
 	
 	@Test
-	public void shouldTestMockingPythagoras()throws Exception{ 
-		SaveManager smMock = mock(SaveManager.class);
-		CalculatorManager cm = new CalculatorManager(smMock, "mock.mock", new Scanner(System.in));
-		Field num1 = cm.getClass().getDeclaredField("num1");
-		num1.setAccessible(true);
-		num1.set(cm, 3);
-		Field num2 = cm.getClass().getDeclaredField("num2");
-		num2.setAccessible(true);
-		num2.set(cm, 4);
-		double result = (double) cm.calculate("pyth");
-		List<String> results = new ArrayList<String>();
-		when(smMock.readFromDisk("mock.mock")).thenReturn(results);
-		verify(smMock).readFromDisk("mock.mock");
-		String saveStr = "Pythagoras: 3.0 4.0 = 5.0";
-		results.add(saveStr);
-		verify(smMock).saveToDisk("mock.mock", results);
+	public void shouldTestMockingPythagoras()throws Exception{
+		mockingHelper(3,4,"pyth","Pythagoras: 3.0 4.0 = 5.0");
 	}
 	
 
